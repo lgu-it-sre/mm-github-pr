@@ -13,6 +13,14 @@ type Plugin struct {
 	plugin.MattermostPlugin
 }
 
+func (p *Plugin) OnActivate() error {
+	if err := p.setUpBotUser(); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Request) {
 	// body, err := ioutil.ReadAll(r.Body)
 	// if err != nil {
