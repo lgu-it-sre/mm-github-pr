@@ -1,0 +1,9 @@
+{
+  "id": "com.github.lgu-it-sre.mm-github-pr",
+  "name": "Mattermost Plugin GitHub DM",
+  "description": "Mattermost Plugin GitHub DM",
+  "version": "0.0.1",
+  "server": {
+    "executable": "plugin"
+  }
+}
