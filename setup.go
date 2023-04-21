@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	botUserName    = "github.bot"
+	botUserName    = "github-bot"
 	botDisplayName = "GitHub Bot"
 	botDescription = "Created by @juny"
 )
