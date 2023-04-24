@@ -206,7 +206,6 @@ type PullRequestEvent struct {
 			User  user   `json:"user"`
 			Repo  repo   `json:"repo"`
 		} `json:"head"`
-		Repo repo `json:"repo"`
 		Base struct {
 			Label string `json:"label"`
 			Ref   string `json:"ref"`

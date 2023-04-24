@@ -21,8 +21,9 @@ func (p *Plugin) handlePullRequestEvent(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
+	payload := "이름" + ` (` + pr.Sender.Login + `) ` + pr.Action + ` merge request ` + `[` + pr.PullRequest.Title + `](` + pr.PullRequest.HtmlURL + `) in [` + pr.PullRequest.Head.Repo.FullName + `](` + pr.PullRequest.Head.Repo.HTML + `)`
 	// for _, username := range pr.GetReviewers() {
 	// 	p.createPost(username, "message", "title", pr.PullRequest.HtmlURL, "description")
 	// }
-	p.createPost("admin", "message", "title", pr.PullRequest.HtmlURL, "description")
+	p.createPost("admin", payload, pr.PullRequest.Title, pr.PullRequest.HtmlURL, pr.PullRequest.Body)
 }
