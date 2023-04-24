@@ -164,7 +164,7 @@ type PullRequestEvent struct {
 		MergeCommitSha string `json:"merge_commit_sha"`
 		Assignee       user   `json:"assignee"`
 		Assignees      []user `json:"assignees"`
-		Requested      []user `json:"requested_reviewers"`
+		Reviewers      []user `json:"requested_reviewers"`
 		Team           []team `json:"requested_teams"`
 		Label          []struct {
 			ID    int    `json:"id"`
@@ -256,4 +256,12 @@ type PullRequestEvent struct {
 		Desc          string `json:"description"`
 	} `json:"organization"`
 	Sender user `json:"sender"`
+}
+
+func (p *PullRequestEvent) GetReviewers() []string {
+	var reviewers []string
+	for _, reviewer := range p.PullRequest.Reviewers {
+		reviewers = append(reviewers, reviewer.Login)
+	}
+	return reviewers
 }

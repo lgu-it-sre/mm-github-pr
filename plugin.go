@@ -51,35 +51,35 @@ func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Req
 	}
 }
 
-func (p *Plugin) createPost(client *model.Client4, username, message, title, title_link, text string) {
-	user, res := client.GetUserByUsername(username, "")
-	if res.StatusCode >= 400 {
-		fmt.Println(res.Error.Message)
+func (p *Plugin) createPost(username, message, title, title_link, text string) {
+	user, err := config.Mattermost.GetUserByUsername(username)
+	if err != nil {
+		fmt.Printf("[HTTP %d] Failed to get user %s: %s", err.StatusCode, username, err.Message)
 		return
 	}
 
-	channel, res := client.CreateDirectChannel(MMBOTID, user.Id)
-	if res.StatusCode >= 400 {
-		fmt.Println(res.Error.Message)
+	channel, err := config.Mattermost.GetDirectChannel(config.BotUserID, user.Id)
+	if err != nil {
+		fmt.Printf("[HTTP %d] Failed to get user %s: %s", err.StatusCode, username, err.Message)
 		return
 	}
 
 	attachment := &model.SlackAttachment{
 		Fallback:  "",
-		Color:     "#db3b21",
+		Color:     "#1a7f37",
 		Title:     title,
 		TitleLink: title_link,
 		Text:      text,
 	}
 	post := &model.Post{
-		UserId:    MMBOTID,
+		UserId:    config.BotUserID,
 		ChannelId: channel.Id,
 		Message:   message,
 	}
 
 	model.ParseSlackAttachment(post, []*model.SlackAttachment{attachment})
 
-	client.CreatePost(post)
+	config.Mattermost.CreatePost(post)
 }
 
 func main() {

@@ -6,7 +6,6 @@ import (
 
 	"github.com/lgu-it-sre/mm-github-pr/github"
 	"github.com/lgu-it-sre/mm-github-pr/util"
-	"github.com/mattermost/mattermost-server/v5/model"
 )
 
 func (p *Plugin) handlePullRequestEvent(w http.ResponseWriter, r *http.Request) {
@@ -21,8 +20,9 @@ func (p *Plugin) handlePullRequestEvent(w http.ResponseWriter, r *http.Request) 
 		}
 		return
 	}
-	client := model.NewAPIv4Client(MMDOMAIN)
-	client.SetToken(MMTOKEN)
 
-	p.createPost(client, "admin", "message", "title", pr.PullRequest.HtmlURL, "description")
+	// for _, username := range pr.GetReviewers() {
+	// 	p.createPost(username, "message", "title", pr.PullRequest.HtmlURL, "description")
+	// }
+	p.createPost("admin", "message", "title", pr.PullRequest.HtmlURL, "description")
 }
