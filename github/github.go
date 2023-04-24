@@ -239,7 +239,14 @@ type PullRequestEvent struct {
 		Deletions           int    `json:"deletions"`
 		ChangedFiles        int    `json:"changed_files"`
 	} `json:"pull_request"`
-	Repository   repo `json:"repository"`
+	Changes struct {
+		Body struct {
+			From string `json:"from"`
+		} `json:"body"`
+	} `json:"changes"`
+	Before       string `json:"before"`
+	After        string `json:"after"`
+	Repository   repo   `json:"repository"`
 	Organization struct {
 		Login         string `json:"login"`
 		ID            int    `json:"id"`
