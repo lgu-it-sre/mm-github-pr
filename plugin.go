@@ -48,6 +48,8 @@ func (p *Plugin) ServeHTTP(c *plugin.Context, w http.ResponseWriter, r *http.Req
 	switch event := r.Header.Get("X-GitHub-Event"); event {
 	case "pull_request":
 		p.handlePullRequestEvent(w, r)
+	case "issue_comment":
+		p.handleIssueCommentEvent(w, r)
 	}
 }
 
