@@ -11,5 +11,6 @@ type IssueCommentEvent struct {
 	Comment comment      `json:"comment"`
 	Repo    repo         `json:"repository"`
 	Org     organization `json:"organization"`
+	Ent     enterprise   `json:"enterprise"`
 	Sender  user         `json:"sender"`
 }

@@ -91,6 +91,7 @@ type PullRequestEvent struct {
 	After      string       `json:"after"`
 	Repository repo         `json:"repository"`
 	Org        organization `json:"organization"`
+	Ent        enterprise   `json:"enterprise"`
 	Sender     user         `json:"sender"`
 }
 

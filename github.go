@@ -28,7 +28,7 @@ func (p *Plugin) handlePullRequestEvent(w http.ResponseWriter, r *http.Request) 
 	pr_title := pr.PullRequest.Title
 	pr_url := pr.PullRequest.HtmlURL
 	pr_repo_fullname := pr.PullRequest.Head.Repo.FullName
-	pr_repo_html := pr.PullRequest.Head.Repo.HTML
+	pr_repo_html := pr.PullRequest.Head.Repo.HtmlURL
 	pr_body := pr.PullRequest.Body
 	user, err := config.Mattermost.GetUserByUsername(sender_username)
 	if err != nil || user.Nickname == "" {
@@ -75,7 +75,7 @@ func (p *Plugin) handleIssueCommentEvent(w http.ResponseWriter, r *http.Request)
 	ic_title := ic.Issue.Title
 	ic_url := ic.Issue.HtmlURL
 	ic_repo_fullname := ic.Repo.FullName
-	ic_repo_html := ic.Repo.HTML
+	ic_repo_html := ic.Repo.HtmlURL
 	ic_body := ic.Comment.Body
 	user, err := config.Mattermost.GetUserByUsername(sender_username)
 	if err != nil || user.Nickname == "" {

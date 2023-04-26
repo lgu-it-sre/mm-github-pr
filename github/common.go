@@ -1,31 +1,31 @@
 package github
 
 type user struct {
-	Login  string `json:"login"`
-	Id     int    `json:"id"`
-	NodeID string `json:"node_id"`
-	Avatar string `json:"avatar_url"`
-	Grav   string `json:"gravatar_id"`
-	URL    string `json:"url"`
-	HTML   string `json:"html_url"`
-	Follow string `json:"followers_url"`
-	Foll   string `json:"following_url"`
-	Gists  string `json:"gists_url"`
-	Star   string `json:"starred_url"`
-	Subs   string `json:"subscriptions_url"`
-	Orgs   string `json:"organizations_url"`
-	Repos  string `json:"repos_url"`
-	Events string `json:"events_url"`
-	Rcvd   string `json:"received_events_url"`
-	Type   string `json:"type"`
-	Site   bool   `json:"site_admin"`
+	Login   string `json:"login"`
+	Id      int    `json:"id"`
+	NodeID  string `json:"node_id"`
+	Avatar  string `json:"avatar_url"`
+	Grav    string `json:"gravatar_id"`
+	URL     string `json:"url"`
+	HtmlURL string `json:"html_url"`
+	Follow  string `json:"followers_url"`
+	Foll    string `json:"following_url"`
+	Gists   string `json:"gists_url"`
+	Star    string `json:"starred_url"`
+	Subs    string `json:"subscriptions_url"`
+	Orgs    string `json:"organizations_url"`
+	Repos   string `json:"repos_url"`
+	Events  string `json:"events_url"`
+	Rcvd    string `json:"received_events_url"`
+	Type    string `json:"type"`
+	Site    bool   `json:"site_admin"`
 }
 
 type team struct {
 	Id           int    `json:"id"`
 	NodeID       string `json:"node_id"`
 	URL          string `json:"url"`
-	HTML         string `json:"html_url"`
+	HtmlURL      string `json:"html_url"`
 	Name         string `json:"name"`
 	Slug         string `json:"slug"`
 	Desc         string `json:"description"`
@@ -44,7 +44,7 @@ type repo struct {
 	FullName        string `json:"full_name"`
 	Private         bool   `json:"private"`
 	Owner           user   `json:"owner"`
-	HTML            string `json:"html_url"`
+	HtmlURL         string `json:"html_url"`
 	Desc            string `json:"description"`
 	Fork            bool   `json:"fork"`
 	URL             string `json:"url"`
@@ -151,6 +151,19 @@ type organization struct {
 	Desc          string `json:"description"`
 }
 
+type enterprise struct {
+	ID      int    `json:"id"`
+	Slug    string `json:"slug"`
+	Name    string `json:"name"`
+	Node    string `json:"node_id"`
+	Avatar  string `json:"avatar_url"`
+	Desc    string `json:"description"`
+	Website string `json:"website_url"`
+	HtmlURL string `json:"html_url"`
+	Created string `json:"created_at"`
+	Updated string `json:"updated_at"`
+}
+
 type label struct {
 	ID    int    `json:"id"`
 	Node  string `json:"node_id"`
@@ -167,7 +180,7 @@ type href struct {
 
 type milestone struct {
 	URL          string `json:"url"`
-	HTML         string `json:"html_url"`
+	HtmlURL      string `json:"html_url"`
 	Labels       string `json:"labels_url"`
 	ID           int    `json:"id"`
 	NodeID       string `json:"node_id"`
@@ -237,7 +250,7 @@ type issue struct {
 
 type comment struct {
 	URL         string    `json:"url"`
-	HTMLURL     string    `json:"html_url"`
+	HtmlURL     string    `json:"html_url"`
 	IssueURL    string    `json:"issue_url"`
 	ID          int       `json:"id"`
 	NodeID      string    `json:"node_id"`
