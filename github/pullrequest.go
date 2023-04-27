@@ -82,7 +82,8 @@ type PullRequestEvent struct {
 		Deletions           int    `json:"deletions"`
 		ChangedFiles        int    `json:"changed_files"`
 	} `json:"pull_request"`
-	Changes struct {
+	Reviewer user `json:"requested_reviewer"`
+	Changes  struct {
 		Body struct {
 			From string `json:"from"`
 		} `json:"body"`
