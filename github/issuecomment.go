@@ -3,6 +3,9 @@ package github
 type IssueCommentEvent struct {
 	Action  string `json:"action"`
 	Changes struct {
+		Title struct {
+			From string `json:"from"`
+		} `json:"title"`
 		Body struct {
 			From string `json:"from"`
 		} `json:"body"`

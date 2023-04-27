@@ -84,6 +84,9 @@ type PullRequestEvent struct {
 	} `json:"pull_request"`
 	Reviewer user `json:"requested_reviewer"`
 	Changes  struct {
+		Title struct {
+			From string `json:"from"`
+		} `json:"title"`
 		Body struct {
 			From string `json:"from"`
 		} `json:"body"`
