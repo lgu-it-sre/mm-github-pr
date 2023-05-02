@@ -20,7 +20,7 @@ jobs:
         id: compute-tag
         run: |
           echo Computing next tag number
-          TAG=$(jq '.version' plugin.json)
+          TAG=$(jq -r '.version' plugin.json)
           echo "tagname=${TAG}" >> $GITHUB_OUTPUT
           echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
 
