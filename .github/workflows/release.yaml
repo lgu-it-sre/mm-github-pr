@@ -31,7 +31,7 @@ jobs:
 
       - name: 🚀 [BUILD] Build application package
         run: |
-          make
+          make build
 
       - name: 🚀 [RELEASE] Create release
         uses: ncipollo/release-action@v1
